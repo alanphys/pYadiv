@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="Images">
+    <file>Icons/window.xpm</file>
+    <file>Icons/invert.xpm</file>
+    <file>Icons/exit.xpm</file>
+    <file>Icons/ImageOpen.xpm</file>
+  </qresource>
+</RCC>

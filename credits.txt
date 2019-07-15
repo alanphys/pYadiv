@@ -1,0 +1,20 @@
+pYadiv is written and maintained by Alan Chamberlain
+
+pYadiv is written in Python and uses the PySide2 bindings to QT5
+
+The following contributions are gratefully acknowledged:
+
+Caduceus by Daniel Coelho
+https://github.com/1danielcoelho/Caduceus
+
+PyDicom and the PyDicom team
+https://github.com/pydicom/pydicom
+
+NumPy and the NumPy developers
+https://www.numpy.org/
+
+Pyside2 and Qt for Python
+https://wiki.qt.io/Qt_for_Python
+
+Open (modified) and Exit icons By FatCow Web Hosting
+http://www.fatcow.com/free-icons/, CC BY 3.0 us, https://commons.wikimedia.org/w/index.php?curid=11522819
