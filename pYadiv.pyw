@@ -15,6 +15,7 @@ Or drag and drop from your file manager.
 
 import sys
 import os
+from platform import system
 from PySide2.QtWidgets import QApplication, QMainWindow, QFileDialog, QLabel
 from PySide2.QtGui import QPixmap, QImage, QMouseEvent
 from PySide2.QtCore import SIGNAL, QObject, Qt
@@ -75,7 +76,16 @@ class pYadivForm(QMainWindow):
         else:
             filenames = os.path.realpath(__file__)
         dirpath = os.path.dirname(os.path.realpath(filenames))
-        filenames = QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*.*)')[0]
+        ostype = system()
+        if ostype == 'Linux':
+            filenames = \
+            QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*)')[0]
+        elif ostype == 'Windows':
+            filenames = \
+            QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*.*)')[0]
+        else:
+            filenames = \
+            QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*)')[0]
         if filenames!= []:
             self.open_image(filenames)
 
