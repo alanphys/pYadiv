@@ -7,12 +7,19 @@ class Imager:
         self._window_width = 1000
         self._window_center = 0
         self._invflag = False
-        self.size = (int(datasets[0].Rows), int(datasets[0].Columns), len(datasets))
+
+        # Dataset has 3D volume
+        if hasattr(datasets[0],"NumberOfFrames"):
+            self.size = (int(datasets[0].Rows), int(datasets[0].Columns), int(datasets[0].NumberOfFrames))
+        #Datasets have 2D planes
+        else:
+            self.size = (int(datasets[0].Rows), int(datasets[0].Columns), len(datasets))
+
         # CT 3D dataset
-        if hasattr(datasets[0],"PixelSpacing"):
+        if hasattr(datasets[0],"PixelSpacing") and (datasets[0].SliceThickness != ''):
             self.spacings = (float(datasets[0].PixelSpacing[0]),
-                         float(datasets[0].PixelSpacing[1]),
-                         float(datasets[0].SliceThickness))
+                             float(datasets[0].PixelSpacing[1]),
+                             float(datasets[0].SliceThickness))
         # 2D dataset
         elif hasattr(datasets[0],"ImagePlanePixelSpacing"):
             self.spacings = (float(datasets[0].ImagePlanePixelSpacing[0]),
@@ -28,10 +35,14 @@ class Imager:
                      np.arange(0.0, (self.size[2] + 1) * self.spacings[2], self.spacings[2]))
 
         # Load pixel data
-        self.values = np.zeros(self.size, dtype='int32')
-        for i, d in enumerate(datasets):
-            # Also performs rescaling. 'unsafe' since it converts from float64 to int32
-            np.copyto(self.values[:, :, i], d.pixel_array, 'unsafe')
+        if datasets[0].pixel_array.ndim == 2:
+            self.values = np.zeros(self.size, dtype='int32')
+            for i, d in enumerate(datasets):
+                # Also performs rescaling. 'unsafe' since it converts from float64 to int32
+                np.copyto(self.values[:, :, i], d.pixel_array, 'unsafe')
+        elif datasets[0].pixel_array.ndim == 3:
+            self.values = datasets[0].pixel_array.transpose(1,2,0)
+
         self.auto_window()
 
     @property
