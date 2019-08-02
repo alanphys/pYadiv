@@ -7,7 +7,7 @@ This is "python" Yet Another Dicom Image Viewer (pYadiv). It is a lightweight DI
 Multiple images can be opened at once. Scroll through the images using the mouse wheel. Left click on the image and drag left-right to change the window width. Left click and drag up-down to change the window centre. Drag and drop of multiple images is supported.
 
 2) Licence
-Please read the file Licence.txt. This means that if as a result of using this program you fry your patients, trash your linac, nuke the cat, blow the city power in a ten block radius and generally cause global thermonuclear meltdown! Sorry, I did warn you!
+Please read the file Licence.txt. This means that if as a result of using this program you fry your patients, trash your linac, nuke the cat, blow the city power in a ten block radius and generally cause global thermonuclear meltdown! Sorry, you were warned!
 
 3) System Requirements
 Currently running on Fedora 28/KDE 5.13/QT 5.11
@@ -31,4 +31,5 @@ favourite file manager is also supported.
 
 7) History
 15/07/2019 version 0.1 released
+2/8/2019   fix 3D dose matrix load
 
