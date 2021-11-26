@@ -46,7 +46,10 @@ class pYadivForm(QMainWindow):
         datasets = []
         for file in filenames:
             try:
-                datasets.append(pydicom.read_file(file))
+                ds = pydicom.dcmread(file,force=True)
+                if 'TransferSyntaxUID' not in ds.file_meta:
+                    ds.file_meta.TransferSyntaxUID = pydicom.uid.ImplicitVRLittleEndian
+                datasets.append(ds)
             except pydicom.errors.InvalidDicomError:
                 num_bad += 1
                 filenames.remove(file)
