@@ -16,7 +16,7 @@ class Imager:
             self.size = (int(datasets[0].Rows), int(datasets[0].Columns), len(datasets))
 
         # CT 3D dataset
-        if hasattr(datasets[0],"PixelSpacing") and (datasets[0].SliceThickness != ''):
+        if hasattr(datasets[0],"PixelSpacing") and (datasets[0].SliceThickness != '') and (datasets[0].SliceThickness != None):
             self.spacings = (float(datasets[0].PixelSpacing[0]),
                              float(datasets[0].PixelSpacing[1]),
                              float(datasets[0].SliceThickness))
