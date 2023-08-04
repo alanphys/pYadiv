@@ -1,88 +1,93 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'pYadivForm.ui',
-# licensing of 'pYadivForm.ui' applies.
-#
-# Created: Mon Jul 15 11:15:34 2019
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'pYadivForm.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.10
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import *  # type: ignore
+from PySide2.QtGui import *  # type: ignore
+from PySide2.QtWidgets import *  # type: ignore
+
+import pYadivForm_rc
 
 class Ui_pYadivForm(object):
     def setupUi(self, pYadivForm):
-        pYadivForm.setObjectName("pYadivForm")
+        if not pYadivForm.objectName():
+            pYadivForm.setObjectName(u"pYadivForm")
         pYadivForm.resize(528, 605)
         pYadivForm.setAcceptDrops(True)
-        self.centralwidget = QtWidgets.QWidget(pYadivForm)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
+        pYadivForm.setIconSize(QSize(32, 32))
+        self.actionOpen = QAction(pYadivForm)
+        self.actionOpen.setObjectName(u"actionOpen")
+        icon = QIcon()
+        icon.addFile(u":/Images/Icons/ImageOpen.xpm", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionOpen.setIcon(icon)
+        self.actionExit = QAction(pYadivForm)
+        self.actionExit.setObjectName(u"actionExit")
+        icon1 = QIcon()
+        icon1.addFile(u":/Images/Icons/exit.xpm", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionExit.setIcon(icon1)
+        self.actionAbout = QAction(pYadivForm)
+        self.actionAbout.setObjectName(u"actionAbout")
+        self.actionInvert = QAction(pYadivForm)
+        self.actionInvert.setObjectName(u"actionInvert")
+        icon2 = QIcon()
+        icon2.addFile(u":/Images/Icons/invert.xpm", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionInvert.setIcon(icon2)
+        self.actionAuto_Window = QAction(pYadivForm)
+        self.actionAuto_Window.setObjectName(u"actionAuto_Window")
+        icon3 = QIcon()
+        icon3.addFile(u":/Images/Icons/window.xpm", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionAuto_Window.setIcon(icon3)
+        self.centralwidget = QWidget(pYadivForm)
+        self.centralwidget.setObjectName(u"centralwidget")
+        sizePolicy = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
         self.centralwidget.setSizePolicy(sizePolicy)
         self.centralwidget.setAcceptDrops(True)
-        self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName("gridLayout")
-        self.qlImage = QtWidgets.QLabel(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.qlImage = QLabel(self.centralwidget)
+        self.qlImage.setObjectName(u"qlImage")
         sizePolicy.setHeightForWidth(self.qlImage.sizePolicy().hasHeightForWidth())
         self.qlImage.setSizePolicy(sizePolicy)
         self.qlImage.setAcceptDrops(True)
-        self.qlImage.setText("")
         self.qlImage.setScaledContents(False)
-        self.qlImage.setObjectName("qlImage")
+
         self.gridLayout.addWidget(self.qlImage, 0, 0, 1, 1)
+
         pYadivForm.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(pYadivForm)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 528, 22))
-        self.menubar.setObjectName("menubar")
-        self.menu_File = QtWidgets.QMenu(self.menubar)
-        self.menu_File.setObjectName("menu_File")
-        self.menu_Help = QtWidgets.QMenu(self.menubar)
-        self.menu_Help.setObjectName("menu_Help")
-        self.menuTools = QtWidgets.QMenu(self.menubar)
-        self.menuTools.setObjectName("menuTools")
+        self.menubar = QMenuBar(pYadivForm)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 528, 30))
+        self.menu_File = QMenu(self.menubar)
+        self.menu_File.setObjectName(u"menu_File")
+        self.menu_Help = QMenu(self.menubar)
+        self.menu_Help.setObjectName(u"menu_Help")
+        self.menuTools = QMenu(self.menubar)
+        self.menuTools.setObjectName(u"menuTools")
         pYadivForm.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(pYadivForm)
-        self.statusbar.setObjectName("statusbar")
+        self.statusbar = QStatusBar(pYadivForm)
+        self.statusbar.setObjectName(u"statusbar")
         pYadivForm.setStatusBar(self.statusbar)
-        self.toolBar = QtWidgets.QToolBar(pYadivForm)
-        self.toolBar.setObjectName("toolBar")
-        pYadivForm.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
-        self.actionOpen = QtWidgets.QAction(pYadivForm)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/Images/Icons/ImageOpen.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionOpen.setIcon(icon)
-        self.actionOpen.setObjectName("actionOpen")
-        self.actionExit = QtWidgets.QAction(pYadivForm)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/Images/Icons/exit.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionExit.setIcon(icon1)
-        self.actionExit.setObjectName("actionExit")
-        self.actionAbout = QtWidgets.QAction(pYadivForm)
-        self.actionAbout.setObjectName("actionAbout")
-        self.actionInvert = QtWidgets.QAction(pYadivForm)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/Images/Icons/invert.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionInvert.setIcon(icon2)
-        self.actionInvert.setObjectName("actionInvert")
-        self.actionAuto_Window = QtWidgets.QAction(pYadivForm)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/Images/Icons/window.xpm"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionAuto_Window.setIcon(icon3)
-        self.actionAuto_Window.setObjectName("actionAuto_Window")
+        self.toolBar = QToolBar(pYadivForm)
+        self.toolBar.setObjectName(u"toolBar")
+        pYadivForm.addToolBar(Qt.TopToolBarArea, self.toolBar)
+
+        self.menubar.addAction(self.menu_File.menuAction())
+        self.menubar.addAction(self.menuTools.menuAction())
+        self.menubar.addAction(self.menu_Help.menuAction())
         self.menu_File.addAction(self.actionOpen)
         self.menu_File.addAction(self.actionExit)
         self.menu_Help.addAction(self.actionAbout)
         self.menuTools.addAction(self.actionInvert)
         self.menuTools.addAction(self.actionAuto_Window)
-        self.menubar.addAction(self.menu_File.menuAction())
-        self.menubar.addAction(self.menuTools.menuAction())
-        self.menubar.addAction(self.menu_Help.menuAction())
         self.toolBar.addAction(self.actionOpen)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionInvert)
@@ -91,19 +96,22 @@ class Ui_pYadivForm(object):
         self.toolBar.addAction(self.actionExit)
 
         self.retranslateUi(pYadivForm)
-        QtCore.QObject.connect(self.actionExit, QtCore.SIGNAL("triggered()"), pYadivForm.close)
-        QtCore.QMetaObject.connectSlotsByName(pYadivForm)
+        self.actionExit.triggered.connect(pYadivForm.close)
+
+        QMetaObject.connectSlotsByName(pYadivForm)
+    # setupUi
 
     def retranslateUi(self, pYadivForm):
-        pYadivForm.setWindowTitle(QtWidgets.QApplication.translate("pYadivForm", "pYadiv Form", None, -1))
-        self.menu_File.setTitle(QtWidgets.QApplication.translate("pYadivForm", "Fi&le", None, -1))
-        self.menu_Help.setTitle(QtWidgets.QApplication.translate("pYadivForm", "&Help", None, -1))
-        self.menuTools.setTitle(QtWidgets.QApplication.translate("pYadivForm", "&Tools", None, -1))
-        self.toolBar.setWindowTitle(QtWidgets.QApplication.translate("pYadivForm", "toolBar", None, -1))
-        self.actionOpen.setText(QtWidgets.QApplication.translate("pYadivForm", "&Open", None, -1))
-        self.actionExit.setText(QtWidgets.QApplication.translate("pYadivForm", "E&xit", None, -1))
-        self.actionAbout.setText(QtWidgets.QApplication.translate("pYadivForm", "&About", None, -1))
-        self.actionInvert.setText(QtWidgets.QApplication.translate("pYadivForm", "&Invert", None, -1))
-        self.actionAuto_Window.setText(QtWidgets.QApplication.translate("pYadivForm", "Auto &Window", None, -1))
+        pYadivForm.setWindowTitle(QCoreApplication.translate("pYadivForm", u"pYadiv Form", None))
+        self.actionOpen.setText(QCoreApplication.translate("pYadivForm", u"&Open", None))
+        self.actionExit.setText(QCoreApplication.translate("pYadivForm", u"E&xit", None))
+        self.actionAbout.setText(QCoreApplication.translate("pYadivForm", u"&About", None))
+        self.actionInvert.setText(QCoreApplication.translate("pYadivForm", u"&Invert", None))
+        self.actionAuto_Window.setText(QCoreApplication.translate("pYadivForm", u"Auto &Window", None))
+        self.qlImage.setText("")
+        self.menu_File.setTitle(QCoreApplication.translate("pYadivForm", u"Fi&le", None))
+        self.menu_Help.setTitle(QCoreApplication.translate("pYadivForm", u"&Help", None))
+        self.menuTools.setTitle(QCoreApplication.translate("pYadivForm", u"&Tools", None))
+        self.toolBar.setWindowTitle(QCoreApplication.translate("pYadivForm", u"toolBar", None))
+    # retranslateUi
 
-import pYadivForm_rc
