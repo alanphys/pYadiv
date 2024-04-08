@@ -9,24 +9,26 @@ class Imager:
         self._invflag = False
 
         # Dataset has 3D volume
-        if hasattr(datasets[0],"NumberOfFrames"):
+        if hasattr(datasets[0], "NumberOfFrames"):
             self.size = (int(datasets[0].Rows), int(datasets[0].Columns), int(datasets[0].NumberOfFrames))
-        #Datasets have 2D planes
+        # Datasets have 2D planes
         else:
             self.size = (int(datasets[0].Rows), int(datasets[0].Columns), len(datasets))
 
         # CT 3D dataset
-        if hasattr(datasets[0],"PixelSpacing") and (datasets[0].SliceThickness != '') and (datasets[0].SliceThickness != None):
+        if (hasattr(datasets[0], "PixelSpacing")
+           and (datasets[0].SliceThickness != '')
+           and (datasets[0].SliceThickness is not None)):
             self.spacings = (float(datasets[0].PixelSpacing[0]),
                              float(datasets[0].PixelSpacing[1]),
                              float(datasets[0].SliceThickness))
         # 2D dataset
-        elif hasattr(datasets[0],"ImagePlanePixelSpacing"):
+        elif hasattr(datasets[0], "ImagePlanePixelSpacing"):
             self.spacings = (float(datasets[0].ImagePlanePixelSpacing[0]),
                              float(datasets[0].ImagePlanePixelSpacing[1]),
                              float(1))
         else:
-            self.spacings = (1,1,1)
+            self.spacings = (1, 1, 1)
 
         self._index = int(self.size[2]/2)
 
@@ -41,7 +43,7 @@ class Imager:
                 # Also performs rescaling. 'unsafe' since it converts from float64 to int32
                 np.copyto(self.values[:, :, i], d.pixel_array, 'unsafe')
         elif datasets[0].pixel_array.ndim == 3:
-            self.values = datasets[0].pixel_array.transpose(1,2,0)
+            self.values = datasets[0].pixel_array.transpose(1, 2, 0)
 
         self.auto_window()
 
@@ -78,7 +80,7 @@ class Imager:
         return self._invflag
 
     @invflag.setter
-    def invflag(self, value:bool):
+    def invflag(self, value: bool):
         self._invflag = value
 
     def get_image(self, index):
@@ -102,7 +104,7 @@ class Imager:
                 mask_0 * 0 + mask_1 * 255 + mask_2 * (255 * (img - w_left) / (w_right - w_left))
 
         # flatten RGB array to RGB32
-        res = (255 << 24 | rgb_array[:,:,0] << 16 | rgb_array[:,:,1] << 8 | rgb_array[:,:,2])
+        res = (255 << 24 | rgb_array[:, :, 0] << 16 | rgb_array[:, :, 1] << 8 | rgb_array[:, :, 2])
         return res
 
     def get_current_image(self):

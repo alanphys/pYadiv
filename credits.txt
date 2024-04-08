@@ -1,6 +1,6 @@
-pYadiv is written and maintained by Alan Chamberlain
+LinaQA is written and maintained by Alan Chamberlain
 
-pYadiv is written in Python and uses the PySide2 bindings to QT5
+LinaQA is written in Python and uses the PySide2 bindings to QT5
 
 The following contributions are gratefully acknowledged:
 

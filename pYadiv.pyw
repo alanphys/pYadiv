@@ -3,8 +3,8 @@
 Show a dicom image or sequence of images
 ========================================
 
-Show a dicom image or sequence of images using Pyside and QT5.
-Usage: python3 DivPy.pyw dicom_filename
+Show a dicom image or sequence of images using Pyside2 and QT5.
+Usage: python pYadiv.pyw dicom_filename
 Or drag and drop from your file manager.
 
 """
@@ -16,13 +16,14 @@ Or drag and drop from your file manager.
 import sys
 import os
 from platform import system
-from PySide2.QtWidgets import QApplication, QMainWindow, QFileDialog, QLabel
+from PySide2.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide2.QtGui import QPixmap, QImage, QMouseEvent
 from PySide2.QtCore import SIGNAL, QObject, Qt
 from pYadivForm import Ui_pYadivForm
 from aboutpackage import About
 from Imager import Imager
 import pydicom
+
 
 class pYadivForm(QMainWindow):
     def __init__(self, parent=None):
@@ -46,7 +47,7 @@ class pYadivForm(QMainWindow):
         datasets = []
         for file in filenames:
             try:
-                ds = pydicom.dcmread(file,force=True)
+                ds = pydicom.dcmread(file, force=True)
                 if 'TransferSyntaxUID' not in ds.file_meta:
                     ds.file_meta.TransferSyntaxUID = pydicom.uid.ImplicitVRLittleEndian
                 datasets.append(ds)
@@ -81,25 +82,20 @@ class pYadivForm(QMainWindow):
         dirpath = os.path.dirname(os.path.realpath(filenames))
         ostype = system()
         if ostype == 'Linux':
-            filenames = \
-            QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*)')[0]
+            filenames = QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*)')[0]
         elif ostype == 'Windows':
-            filenames = \
-            QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*.*)')[0]
+            filenames = QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*.*)')[0]
         else:
-            filenames = \
-            QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*)')[0]
-        if filenames!= []:
+            filenames = QFileDialog.getOpenFileNames(self, 'Open DICOM file', dirpath, 'DICOM files (*.dcm);;All files (*)')[0]
+        if filenames:
             self.open_image(filenames)
 
     def show_image(self, numpy_array):
-        if numpy_array is None:
-            return
-
-        #create a QImage from Numpy array and display it in a label
-        qpImage = QImage(numpy_array, numpy_array.shape[1], numpy_array.shape[0], QImage.Format_ARGB32)
-        self.ui.qlImage.setPixmap(QPixmap.fromImage(qpImage).scaled(self.ui.qlImage.width(),self.ui.qlImage.height(),Qt.KeepAspectRatio))
-        self.ui.qlImage.show()
+        if numpy_array is not None:
+            # create a QImage from Numpy array and display it in a label
+            qp_image = QImage(numpy_array, numpy_array.shape[1], numpy_array.shape[0], QImage.Format_ARGB32)
+            self.ui.qlImage.setPixmap(QPixmap.fromImage(qp_image).scaled(self.ui.qlImage.width(), self.ui.qlImage.height(), Qt.KeepAspectRatio))
+            self.ui.qlImage.show()
 
     def showabout(self):
         about = About()
@@ -114,19 +110,19 @@ class pYadivForm(QMainWindow):
     def wheelEvent(self, e):
         self.imager.index += int(e.delta()/120)
         self.show_image(self.imager.get_current_image())
-        self.ui.statusbar.showMessage("Current slice %d" % (self.imager.index))
+        self.ui.statusbar.showMessage("Current slice %d" % self.imager.index)
 
-    def mousePressEvent(self, event:QMouseEvent):
+    def mousePressEvent(self, event: QMouseEvent):
         if event.button() == Qt.LeftButton:
             self.mouse_last_pos = event.globalPos()
             self.mouse_button_down = True
 
-    def mouseReleaseEvent(self, event:QMouseEvent):
+    def mouseReleaseEvent(self, event: QMouseEvent):
         if event.button() == Qt.LeftButton:
             self.mouse_last_pos = None
             self.mouse_button_down = False
 
-    def mouseMoveEvent(self, event:QMouseEvent):
+    def mouseMoveEvent(self, event: QMouseEvent):
         if self.mouse_button_down:
             delta = (event.globalPos() - self.mouse_last_pos) * (self.imager.window_width/1000)
             self.mouse_last_pos = event.globalPos()
@@ -150,10 +146,10 @@ class pYadivForm(QMainWindow):
             filenames = []
             for url in urls:
                 if url != "":
-                    filename = url.split('/',2)[2]
+                    filename = url.split('/', 2)[2]
                 if filename != "":
                     filenames.append(filename)
-            if filenames != []:
+            if filenames:
                 self.open_image(filenames)
 
     def resizeEvent(self, event):
@@ -167,13 +163,14 @@ class pYadivForm(QMainWindow):
             self.imager.invflag = True
         self.show_image(self.imager.get_current_image())
 
+
 def main():
     app = QApplication(sys.argv)
     window = pYadivForm()
     window.show()
     if len(sys.argv) > 1:
         filenames = sys.argv[1:]
-        if filenames != []:
+        if filenames:
             window.open_image(filenames)
     sys.exit(app.exec_())
 

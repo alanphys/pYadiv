@@ -10,7 +10,7 @@ Multiple images can be opened at once. Scroll through the images using the mouse
 Please read the file Licence.txt. This means that if as a result of using this program you fry your patients, trash your linac, nuke the cat, blow the city power in a ten block radius and generally cause global thermonuclear meltdown! Sorry, you were warned!
 
 3) System Requirements
-Currently running on Fedora 28/KDE 5.13/QT 5.11
+Currently running on Fedora 38/KDE 5.27/QT 5.15
 Windows users will need to install a python stack (such as anaconda) and Pyside2/QT5.
 Note: If you use anaconda you must install Pyside2 with conda and not Pip otherwise the paths will be incorrect.
 
@@ -32,4 +32,8 @@ favourite file manager is also supported.
 7) History
 15/07/2019 version 0.1 released
 2/8/2019   fix 3D dose matrix load
+26/11/2021 set default transfer syntax
+2/12/2021  fix slice thickness DICOM dose
+3/3/2023   fix about package
+4/8/2023   make icons 32x32
 
