@@ -6,7 +6,7 @@ Show a tabbed help window
 Show a tabbed help window displaying the readme, licence and credits
 """
 # author : AC Chamberlain <alanphys@yahoo.co.uk>
-# copyright: AC Chamberlain (c) 2019-2023
+# copyright: AC Chamberlain (c) 2019-2024
 
 from .aboutformui import Ui_AboutForm
 from PySide2.QtWidgets import QDialog

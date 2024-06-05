@@ -1,5 +1,6 @@
 pYadiv Readme file 
 
+Note: The pYadiv code has been incorporated in LinaQA and this repository is deprecated.
 
 1) Introduction
 This is "python" Yet Another Dicom Image Viewer (pYadiv). It is a lightweight DICOM image viewer that will allow you to view most Radiology and Oncology image formats. It is not a medical image viewer and is intended for quality assurance purposes only. Image data is presented as pixel value and not Hounsfield or other units. 
